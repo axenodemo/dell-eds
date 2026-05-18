@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #002b5c;
+}
+
+.dell-cards-container {
+    background: #002b5c;
+    padding: 28px 0 56px;
+}
+
+.dell-cards {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 64px;
+    color: #fff;
+}
+
+/* Eyebrow */
+
+.eyebrow {
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* Heading */
+
+.dell-cards h2 {
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 300;
+    margin: 0 0 42px;
+}
+
+/* Grid */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+/* Card */
+
+.card {
+    background: #001f45;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+/* Image */
+
+.card picture {
+    display: block;
+    line-height: 0;
+}
+
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content */
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 16px 18px;
+}
+
+/* Title */
+
+.card h3 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 400;
+}
+
+/* Spacer pushes CTA down */
+
+.spacer {
+    flex-grow: 1;
+    min-height: 36px;
+}
+
+/* CTA */
+
+.card a,
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.card a::after,
+.footer-links a::after {
+    content: "→";
+    transition: transform 0.2s ease;
+}
+
+.card a:hover::after,
+.footer-links a:hover::after {
+    transform: translateX(4px);
+}
+
+/* Footer Links */
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 38px;
+    margin-top: 48px;
+}
+
+/* Tablet */
+
+@media (max-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .whats-happening h2 {
+        font-size: 56px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 767px) {
+    .whats-happening {
+        padding: 0 20px;
+    }
+
+    .whats-happening h2 {
+        font-size: 42px;
+        margin-bottom: 28px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .card img {
+        height: 220px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+    }
+}
