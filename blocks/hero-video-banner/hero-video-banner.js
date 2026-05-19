@@ -6,13 +6,13 @@ const PLAY_ICON = `<svg class="hero-video-banner__play-icon" width="22" height="
 export default function decorate(block) {
   const rows = [...block.children];
 
-  const eyebrow   = rows[0]?.querySelector('p')?.textContent?.trim();
-  const title     = rows[1]?.querySelector('p')?.textContent?.trim();
-  const desc      = rows[2]?.querySelector('p')?.textContent?.trim();
+  const eyebrow = rows[0]?.querySelector('p')?.textContent?.trim();
+  const title = rows[1]?.querySelector('p')?.textContent?.trim();
+  const desc = rows[2]?.querySelector('p')?.textContent?.trim();
   const playVideo = rows[3]?.querySelector('p')?.textContent?.trim();
   const learnMore = rows[4]?.querySelector('p')?.textContent?.trim();
-  const viewAll   = rows[5]?.querySelector('p')?.textContent?.trim();
-  const videoSrc  = rows[6]?.querySelector('a')?.href || rows[6]?.querySelector('p')?.textContent?.trim();
+  const viewAll = rows[5]?.querySelector('p')?.textContent?.trim();
+  const videoSrc = rows[6]?.querySelector('a')?.href || rows[6]?.querySelector('p')?.textContent?.trim();
   const posterSrc = rows[7]?.querySelector('a')?.href || rows[7]?.querySelector('p')?.textContent?.trim();
 
   function parseCTA(str) {
