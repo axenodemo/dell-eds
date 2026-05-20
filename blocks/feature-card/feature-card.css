@@ -118,6 +118,7 @@ main .section.charcoal-blue-bg .feature-card {
 .feature-card .feature-card-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   color: var(--feature-card-text) !important;
   font-size: 14px;
   font-weight: 600;
@@ -125,6 +126,7 @@ main .section.charcoal-blue-bg .feature-card {
   transition: opacity 0.2s ease;
   line-height: 1.5;
   padding: 10px 0;
+  flex: 1 1 0;
 }
 
 .feature-card .feature-card-link:hover {

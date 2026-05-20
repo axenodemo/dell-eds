@@ -44,20 +44,21 @@ export default function decorate(block) {
     if (link && cell.textContent.trim() === link.textContent.trim()) {
       const isPrimary = cell.querySelector('strong');
       const isSecondary = cell.querySelector('em');
+      
+      const text = link.textContent.trim();
+      const hasTextArrow = text.includes('→') || text.includes('->') || text.includes('>');
+      const hasIconArrow = cell.querySelector('.icon') !== null;
+      
       let type = 'link';
-      if (isPrimary) {
+      
+      if (hasTextArrow || hasIconArrow) {
+        type = 'link';
+      } else if (isPrimary) {
         type = 'primary';
       } else if (isSecondary) {
         type = 'secondary';
       } else {
-        // Smart fallback: default to buttons unless text has a right arrow (→ or ->)
-        const text = link.textContent.trim();
-        const hasArrow = text.includes('→') || text.includes('->') || text.includes('>');
-        if (hasArrow) {
-          type = 'link';
-        } else {
-          type = buttons.length === 0 ? 'primary' : 'secondary';
-        }
+        type = buttons.length === 0 ? 'primary' : 'secondary';
       }
 
       buttons.push({ link, type });
