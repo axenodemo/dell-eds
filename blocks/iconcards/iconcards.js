@@ -8,9 +8,9 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && (div.querySelector('picture') || div.querySelector('.icon'))) {
-        div.className = 'supportcards-card-image';
+        div.className = 'iconcards-card-image';
       } else {
-        div.className = 'supportcards-card-body';
+        div.className = 'iconcards-card-body';
       }
     });
     ul.append(li);

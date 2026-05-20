@@ -1,4 +1,4 @@
-import { extractBlockConfig } from '../../scripts/scripts.js';
+import { extractBlockConfig } from '../../scripts/utils.js';
 
 export default function decorate(block) {
   const config = extractBlockConfig(block);

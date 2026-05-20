@@ -1,4 +1,4 @@
-.supportcards > ul {
+.iconcards > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
   gap: 4px;
 }
 
-.supportcards > ul > li {
+.iconcards > ul > li {
   background-color: #344553;
   padding: 24px;
   display: flex;
@@ -21,62 +21,63 @@
   transition: background-color 0.2s ease;
 }
 
-.supportcards > ul > li:hover {
+.iconcards > ul > li:hover {
   background-color: #3d5060;
 }
 
-.supportcards .supportcards-card-body {
+.iconcards .iconcards-card-body {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.2;
 }
 
-.supportcards .supportcards-card-body p {
+.iconcards .iconcards-card-body p {
   margin: 0;
 }
 
-.supportcards .supportcards-card-body a {
+.iconcards .iconcards-card-body a {
   color: #fff;
   text-decoration: none;
 }
 
-.supportcards .supportcards-card-image {
+.iconcards .iconcards-card-image {
   margin: 0 24px 0 0;
   line-height: 0;
 }
-.supportcards .supportcards-card-image p {
+
+.iconcards .iconcards-card-image p {
   all: unset;
 }
 
 
-.supportcards .supportcards-card-image .icon {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-}
-
-.supportcards .supportcards-card-image .icon img,
-.supportcards .supportcards-card-image .icon svg {
-  width: 100%;
-  height: 100%;
-  filter: invert(56%) sepia(99%) saturate(1832%) hue-rotate(167deg) brightness(97%) contrast(101%);
-}
-
-.supportcards > ul > li .supportcards-card-image > picture > img {
+.iconcards > ul > li .iconcards-card-image > picture > img {
   width: 40px;
   height: 40px;
   object-fit: contain;
 }
 
-@media (min-width: 900px) {
-  .supportcards > ul {
+.iconcards .iconcards-card-image .icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.iconcards .iconcards-card-image .icon img,
+.iconcards .iconcards-card-image .icon svg {
+  width: 100%;
+  height: 100%;
+  filter: invert(56%) sepia(99%) saturate(1832%) hue-rotate(167deg) brightness(97%) contrast(101%);
+}
+
+@media (width >= 900px) {
+  .iconcards > ul {
     flex-direction: row;
     justify-content: center;
     gap: 16px;
   }
 
-  .supportcards > ul > li {
+  .iconcards > ul > li {
     flex: 1 1 0;
     min-width: 150px;
     flex-direction: column;
@@ -85,7 +86,7 @@
     padding: 32px 16px;
   }
 
-  .supportcards .supportcards-card-image {
-    margin: 0 0 16px 0;
+  .iconcards .iconcards-card-image {
+    margin: 0 0 16px;
   }
 }
