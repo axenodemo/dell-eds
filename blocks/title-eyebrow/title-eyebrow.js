@@ -5,7 +5,7 @@
 export default function decorate(block) {
   // Extract authored content
   const heading3 = block.querySelector('.title-eyebrow h3');
-  const heading1 = block.querySelector('.title-eyebrow h1');
+  const heading1 = block.querySelector('.title-eyebrow h2');
 
   // Clear existing content
   block.textContent = '';
