@@ -1,4 +1,4 @@
-.iconcards > ul {
+.iconcards>ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -7,7 +7,7 @@
   gap: 4px;
 }
 
-.iconcards > ul > li {
+.iconcards>ul>li {
   background-color: #344553;
   padding: 24px;
   display: flex;
@@ -21,7 +21,7 @@
   transition: background-color 0.2s ease;
 }
 
-.iconcards > ul > li:hover {
+.iconcards>ul>li:hover {
   background-color: #3d5060;
 }
 
@@ -51,7 +51,13 @@
 }
 
 
-.iconcards > ul > li .iconcards-card-image > picture > img {
+.supportcards>ul>li .supportcards-card-image>picture>img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.iconcards>ul>li .iconcards-card-image>picture>img {
   width: 40px;
   height: 40px;
   object-fit: contain;
@@ -70,14 +76,14 @@
   filter: invert(56%) sepia(99%) saturate(1832%) hue-rotate(167deg) brightness(97%) contrast(101%);
 }
 
-@media (width >= 900px) {
-  .iconcards > ul {
+@media (width >=900px) {
+  .iconcards>ul {
     flex-direction: row;
     justify-content: center;
     gap: 16px;
   }
 
-  .iconcards > ul > li {
+  .iconcards>ul>li {
     flex: 1 1 0;
     min-width: 150px;
     flex-direction: column;
