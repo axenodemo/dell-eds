@@ -1,5 +1,5 @@
 
-.video-accordion-wrapper { max-width: none !important; }
+.video-accordion-wrapper { max-width: none !important; padding: 0 16px !important; }
 
 .va-block { display: flex; width: 100%; height: 560px; overflow: hidden; font-family: var(--body-font-family, 'Segoe UI', Arial, sans-serif); }
 
@@ -95,7 +95,7 @@
   .va-item.va-video .va-item-title { font-size: 17px; }
   .va-item.va-active.va-video .va-item-title { font-size: 22px; }
   .va-chevron svg { width: 20px; height: 20px; }
-  .va-hero-mobile > p { font-family: 'Roboto', sans-serif; font-size: 2.5rem; font-weight: 300; line-height: 1.172; color: #636363; padding: 0 30px; }
+  .va-hero-mobile > p { font-family: 'Roboto', sans-serif; font-size: 2.5rem; font-weight: 300; line-height: 1.172; color: #636363; padding: 0 30px; padding-bottom: 30px !important; }
 }
 
 @media (min-width: 1026px) { .va-hero-mobile { display: none; } }
