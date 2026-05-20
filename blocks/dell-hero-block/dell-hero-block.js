@@ -12,23 +12,28 @@ export default function decorate(block) {
     controlsRow.children[1]?.textContent.trim() || 'Pause';
 
   // SLIDES
-  const slides = rows.slice(1).map((row) => {
+    const slides = rows.slice(1).map((row) => {
 
-    const cols = [...row.children];
+      const cols = [...row.children];
 
-    return {
-      image: cols[0]?.textContent.trim(),
-      mobileImage: cols[1]?.textContent.trim(),
-      eyebrow: cols[2]?.textContent.trim(),
-      title: cols[3]?.textContent.trim(),
-      description: cols[4]?.textContent.trim(),
-      primaryText: cols[5]?.textContent.trim(),
-      primaryLink: cols[6]?.textContent.trim(),
-      secondaryText: cols[7]?.textContent.trim(),
-      secondaryLink: cols[8]?.textContent.trim(),
-    };
-  });
+      const pictureEls = row.querySelectorAll('picture');
+      const linkEls = row.querySelectorAll('a');
 
+      return {
+        image: pictureEls[0]?.querySelector('img')?.src || '',
+        mobileImage: pictureEls[1]?.querySelector('img')?.src || '',
+
+        eyebrow: cols[2]?.textContent.trim(),
+        title: cols[3]?.textContent.trim(),
+        description: cols[4]?.textContent.trim(),
+
+        primaryText: linkEls[0]?.textContent.trim(),
+        primaryLink: linkEls[0]?.href,
+
+        secondaryText: linkEls[1]?.textContent.trim(),
+        secondaryLink: linkEls[1]?.href,
+      };
+    });
   // CLEAR ORIGINAL
   block.textContent = '';
 

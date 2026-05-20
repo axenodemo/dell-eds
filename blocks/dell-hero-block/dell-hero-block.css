@@ -696,3 +696,12 @@ a.button:hover, a.button:focus, button:hover, button:focus{
   font-weight: 100;
 }
 
+.btn-wrap-dell-hero-block {
+  flex-direction: row;  /* Changed from column */
+  gap: 10px;
+}
+
+.primary-btn-dell-hero-block,
+.outline-btn-dell-hero-block {
+  width: calc(50% - 5px);  /* Each button takes 50% minus half the gap */
+}
