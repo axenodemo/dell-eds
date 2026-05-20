@@ -44,13 +44,13 @@ export default function decorate(block) {
     if (link && cell.textContent.trim() === link.textContent.trim()) {
       const isPrimary = cell.querySelector('strong');
       const isSecondary = cell.querySelector('em');
-      
+
       const text = link.textContent.trim();
       const hasTextArrow = text.includes('→') || text.includes('->') || text.includes('>');
       const hasIconArrow = cell.querySelector('.icon') !== null;
-      
+
       let type = 'link';
-      
+
       if (hasTextArrow || hasIconArrow) {
         type = 'link';
       } else if (isPrimary) {
@@ -177,5 +177,3 @@ export default function decorate(block) {
   // Trigger AEM icon decoration
   decorateIcons(block);
 }
-
-

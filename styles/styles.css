@@ -342,6 +342,6 @@ main .section.highlight {
 }
 
 main .section.charcoal-blue-bg {
-  background-color: rgb(29, 44, 59);
-  color: #ffffff;
+  background-color: rgb(29 44 59);
+  color: #fff;
 }
