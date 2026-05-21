@@ -360,7 +360,6 @@ main .section > div,
     height: 760px;
   }
 
-  /* IMAGE BG STILL FULL */
 
   .hero-slide-dell-hero-block::after {
     background:
@@ -695,12 +694,10 @@ a.button:hover, a.button:focus, button:hover, button:focus{
 .hero-content-dell-hero-block h1 {
   font-weight: 100;
 }
-
 .btn-wrap-dell-hero-block {
   flex-direction: row;  /* Changed from column */
   gap: 10px;
 }
-
 .primary-btn-dell-hero-block,
 .outline-btn-dell-hero-block {
   width: calc(50% - 5px);  /* Each button takes 50% minus half the gap */

@@ -34,14 +34,11 @@ export default function decorate(block) {
         secondaryLink: linkEls[1]?.href,
       };
     });
-  // CLEAR ORIGINAL
   block.textContent = '';
 
-  // MAIN WRAPPER
   const carousel = document.createElement('section');
   carousel.className = 'hero-carousel-dell-hero-block';
 
-  // CREATE SLIDES
   slides.forEach((slide, index) => {
 
     const slideEl = document.createElement('div');
