@@ -39,7 +39,8 @@ body > main > div > div.title-eyebrow-wrapper{
 
 @media (min-width: 900px) {
   .title-eyebrow .ts-row {
-    /* padding-left: 90px;  */
+    max-width: 80%;
+    margin: auto;
   }
 
   .title-eyebrow {
