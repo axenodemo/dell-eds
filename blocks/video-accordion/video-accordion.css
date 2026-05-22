@@ -38,15 +38,15 @@
 
 .va-item-title p { font-size: 54.64px; font-weight: 300; color: #636363; line-height: 64.0381px; height: 221px; margin: 0; }
 
-li.va-item.va-video:nth-child(1) {
+li.va-item.va-video:nth-child(2) {
 background-color: #757575;
 }
 
-li.va-item.va-video:nth-child(2) {
+li.va-item.va-video:nth-child(3) {
   background-color:  #666 ;
 }
 
-li.va-item.va-video:nth-child(3) {
+li.va-item.va-video:nth-child(4) {
 background-color: #5c5c5c
 }
 .va-item.va-video .va-item-title { font-size: min(1.5vw, 1.5rem); font-weight: 400; line-height: 1.167; align-self: center; }
