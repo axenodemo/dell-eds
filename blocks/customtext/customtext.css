@@ -1,0 +1,23 @@
+.customtext {
+  display: block;
+}
+
+.customtext .customtext-content {
+  font-size: var(--customtext-font-size, inherit);
+  font-weight: var(--customtext-font-weight, inherit);
+  color: var(--customtext-color, inherit);
+}
+
+.customtext .customtext-content p,
+.customtext .customtext-content h1,
+.customtext .customtext-content h2,
+.customtext .customtext-content h3,
+.customtext .customtext-content h4,
+.customtext .customtext-content h5,
+.customtext .customtext-content h6 {
+  font-size: var(--customtext-font-size, inherit);
+  font-weight: var(--customtext-font-weight, inherit);
+  color: var(--customtext-color, inherit);
+  line-height: var(--customtext-line-height, 1.4);
+  margin: 0;
+}

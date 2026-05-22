@@ -1,0 +1,176 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font-family);
+    background: #002b5c;
+}
+
+/* Root Block */
+
+.dell-cards {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 28px 64px 56px;
+    color: #fff;
+    background: #002b5c;
+}
+
+/* Eyebrow */
+
+.dell-cards .eyebrow {
+    font-family: var(--body-font-family);
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Heading */
+
+.dell-cards h2 {
+    font-family: var(--heading-font-family);
+    font-size: 72px;
+    line-height: 1;
+    font-weight: 300;
+    margin: 0 0 42px;
+    color: #fff;
+}
+
+/* Cards Grid */
+
+.dell-cards .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+/* Card */
+
+.dell-cards .card {
+    background: #001f45;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+/* Image */
+
+.dell-cards .card picture {
+    display: block;
+    line-height: 0;
+}
+
+.dell-cards .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Card Body */
+
+.dell-cards .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 14px 16px 18px;
+}
+
+/* Title */
+
+.dell-cards .card h3 {
+    font-family: var(--heading-font-family);
+    margin: 0;
+    font-size: 24px;
+    line-height: 1.35;
+    font-weight: 400;
+    color: #fff;
+}
+
+/* Spacer */
+
+.dell-cards .spacer {
+    flex-grow: 1;
+    min-height: 36px;
+}
+
+/* CTA */
+
+.dell-cards .card a,
+.dell-cards .footer-links a {
+    font-family: var(--heading-font-family);
+    color: #fff;
+    text-decoration: none;
+    font-size: 17px;
+    line-height: 1.4;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Arrow */
+
+.dell-cards .card a::after,
+.dell-cards .footer-links a::after {
+    content: "→";
+    transition: transform 0.2s ease;
+}
+
+.dell-cards .card a:hover::after,
+.dell-cards .footer-links a:hover::after {
+    transform: translateX(4px);
+}
+
+/* Footer Links */
+
+.dell-cards .footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 38px;
+    margin-top: 48px;
+}
+
+/* Tablet */
+
+@media (width <= 1200px) {
+    .dell-cards .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dell-cards h2 {
+        font-size: 56px;
+    }
+}
+
+/* Mobile */
+
+@media (width <= 767px) {
+    .dell-cards {
+        padding: 28px 20px 48px;
+    }
+
+    .dell-cards h2 {
+        font-size: 42px;
+        margin-bottom: 28px;
+    }
+
+    .dell-cards .cards {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .dell-cards .card img {
+        height: 100%;
+    }
+
+    .dell-cards .footer-links {
+        flex-direction: column;
+        gap: 18px;
+    }
+}

@@ -1,0 +1,266 @@
+/* feature-card block CSS variables */
+.feature-card {
+  --feature-card-bg: #002c5c;
+  --feature-card-text: #fff;
+  --feature-card-btn-primary-bg: #fff;
+  --feature-card-btn-primary-text: #002c5c;
+  --feature-card-btn-secondary-border: #fff;
+  --feature-card-btn-secondary-text: #fff;
+  --feature-card-icon-color: #fff;
+
+  margin: 40px auto;
+  max-width: 100%;
+}
+
+/* Adjust card background if inside a charcoal section */
+main .section.charcoal-blue-bg .feature-card {
+  --feature-card-bg: #14212d;
+
+  /* Slightly darker than section background #1d2c3b */
+  --feature-card-btn-primary-text: #14212d;
+}
+
+.feature-card-inner {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Image styling */
+.feature-card-image {
+  width: 100%;
+  line-height: 0;
+}
+
+.feature-card-image picture {
+  display: block;
+  width: 100%;
+}
+
+.feature-card-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+/* Content block styling */
+.feature-card-content {
+  background-color: var(--feature-card-bg);
+  color: var(--feature-card-text);
+  padding: 32px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-card-title {
+  font-family: var(--body-font-family);
+  color: var(--feature-card-text);
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 0 16px;
+  line-height: 1.25;
+}
+
+.feature-card-description {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 24px;
+}
+
+/* Buttons styling */
+.feature-card-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.feature-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  min-width: 140px;
+  flex: 1 1 0;
+}
+
+.feature-card-btn.primary {
+  background-color: var(--feature-card-btn-primary-bg);
+  color: var(--feature-card-btn-primary-text);
+  border: 1.5px solid var(--feature-card-btn-primary-bg);
+}
+
+.feature-card-btn.primary:hover {
+  background-color: rgb(255 255 255 / 90%);
+  border-color: rgb(255 255 255 / 90%);
+}
+
+.feature-card-btn.secondary {
+  background-color: transparent;
+  color: var(--feature-card-btn-secondary-text);
+  border: 1.5px solid var(--feature-card-btn-secondary-border);
+}
+
+.feature-card-btn.secondary:hover {
+  background-color: rgb(255 255 255 / 10%);
+}
+
+.feature-card .feature-card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--feature-card-text) !important;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  line-height: 1.5;
+  padding: 10px 0;
+  flex: 1 1 0;
+}
+
+.feature-card .feature-card-link:hover {
+  text-decoration: underline;
+  opacity: 0.9;
+}
+
+/* Icons layout */
+.feature-card-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1.5px solid rgb(255 255 255 / 15%);
+  padding-top: 24px;
+}
+
+.feature-card-icon-item {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature-card-icon-item .icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.feature-card-icon-item .icon img,
+.feature-card-icon-item .icon svg {
+  width: 100%;
+  height: 100%;
+  filter: brightness(0) invert(1);
+
+  /* Ensure icons are white */
+}
+
+.feature-card-icon-label {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Inline icons in buttons and links */
+.feature-card-btn .icon,
+.feature-card .feature-card-link .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.feature-card-btn .icon img,
+.feature-card-btn .icon svg,
+.feature-card .feature-card-link .icon img,
+.feature-card .feature-card-link .icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Primary buttons have dark text, keep dark icon */
+.feature-card-btn.primary .icon img,
+.feature-card-btn.primary .icon svg {
+  filter: none;
+}
+
+/* Secondary buttons and links have white text, invert icon */
+.feature-card-btn.secondary .icon img,
+.feature-card-btn.secondary .icon svg,
+.feature-card .feature-card-link .icon img,
+.feature-card .feature-card-link .icon svg {
+  filter: brightness(0) invert(1);
+}
+
+/* Desktop layout overlay */
+@media (width >=900px) {
+  .feature-card {
+    margin: 60px auto;
+  }
+
+  .feature-card-inner {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+    position: relative;
+  }
+
+  /* Default / image-left alignment */
+  .feature-card .feature-card-image {
+    grid-column: 1 / 9;
+    grid-row: 1;
+    z-index: 1;
+  }
+
+  .feature-card .feature-card-content {
+    grid-column: 6 / 13;
+    grid-row: 1;
+    z-index: 2;
+    padding: 56px 48px;
+    box-shadow: 0 16px 48px rgb(0 0 0 / 35%);
+  }
+
+  /* Image-right alignment */
+  .feature-card.image-right .feature-card-image {
+    grid-column: 5 / 13;
+    grid-row: 1;
+    z-index: 1;
+  }
+
+  .feature-card.image-right .feature-card-content {
+    grid-column: 1 / 8;
+    grid-row: 1;
+    z-index: 2;
+    box-shadow: 0 16px 48px rgb(0 0 0 / 35%);
+  }
+
+
+
+  .feature-card-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .feature-card-description {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .feature-card-icon-label {
+    font-size: 13px;
+  }
+}
