@@ -1,5 +1,6 @@
 export default function decorate(block) {
   const rows = [...block.children];
+
   let renderedCount = 0;
 
   rows.forEach((row) => {
