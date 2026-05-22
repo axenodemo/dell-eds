@@ -159,3 +159,6 @@
   padding: 70px 80px;
   box-sizing: border-box;
 }
+main .section {
+  max-width: 100%;
+}
