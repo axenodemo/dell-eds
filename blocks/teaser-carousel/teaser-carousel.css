@@ -331,7 +331,7 @@ body > main > div > div.teaser-carousel-wrapper {
 .dc-play__icon { flex-shrink: 0; }
 
 /* ── Mobile View (1 slide visible) ────────────────────────────────────── */
-@media (max-width: 426px) {
+@media (max-width: 526px) {
   .teaser-carousel {
     --dc-peek:        18%;         /* Small peek on sides */
     --dc-img-offset:  0%;         /* Image takes full width */
@@ -447,7 +447,7 @@ body > main > div > div.teaser-carousel-wrapper {
 }
 
 /* ── Tablet (stacked cards, 2 visible) ───────────────────────────────── */
-@media (min-width: 426px) and (max-width: 1024px) {
+@media (min-width: 526px) and (max-width: 1024px) {
   .teaser-carousel {
     --dc-peek: 6%;
     --dc-img-offset: 0%;
