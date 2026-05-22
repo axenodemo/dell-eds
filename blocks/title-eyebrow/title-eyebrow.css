@@ -1,12 +1,10 @@
 .title-eyebrow {
-  padding: 2.5rem 1rem 1.5rem;
-  background-color: #0e1927;
+  padding: 2.5rem 0rem 1.5rem;
   color: #ffffff;
 }
 
 body > main > div > div.title-eyebrow-wrapper{
-  max-width: 80%;
-  margin: auto;
+  padding: 0%;
 }
 
 
