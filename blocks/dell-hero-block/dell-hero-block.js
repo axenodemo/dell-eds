@@ -4,7 +4,8 @@ export default function decorate(block) {
   // CONTROLS
   const controlsRow = rows[0];
 
-  const controlsText = controlsRow.children[0]?.textContent.trim() || 'Play,Pause';
+  const controlsText = controlsRow.children[0]?.textContent.trim()
+    || 'Play,Pause';
 
   const [playLabel, pauseLabel] = controlsText.split(',');
 
@@ -66,13 +67,15 @@ export default function decorate(block) {
   slides.forEach((slide, index) => {
     const slideEl = document.createElement('div');
 
-    slideEl.className = `hero-slide-dell-hero-block ${
-      index === 0 ? 'active' : ''
-    } ${
-      index % 2 === 0
-        ? 'dark-theme-dell-hero-block'
-        : 'light-theme-dell-hero-block'
-    }`;
+    slideEl.className = `
+      hero-slide-dell-hero-block
+      ${index === 0 ? 'active' : ''}
+      ${
+  index % 2 === 0
+    ? 'dark-theme-dell-hero-block'
+    : 'light-theme-dell-hero-block'
+}
+    `;
 
     slideEl.innerHTML = `
       <div class="hero-content-dell-hero-block">
@@ -123,21 +126,21 @@ export default function decorate(block) {
 
       <div class="hero-image-dell-hero-block">
         <picture>
-          ${
-  slide.mobileImage
+
+          ${slide.mobileImage
     ? `
             <source
-              media="(max-width: 768px)"
+              media="(max-width: 1023px)"
               srcset="${slide.mobileImage}"
             />
           `
-    : ''
-}
+    : ''}
 
           <img
             src="${slide.image}"
             alt="${slide.title || 'Hero Banner'}"
           />
+
         </picture>
       </div>
     `;
@@ -176,18 +179,26 @@ export default function decorate(block) {
 
   block.append(carousel);
 
-  // JS (SCOPED)
-  const heroSlides = block.querySelectorAll('.hero-slide-dell-hero-block');
+  // JS
+  const heroSlides = block.querySelectorAll(
+    '.hero-slide-dell-hero-block',
+  );
 
-  const nextBtn = block.querySelector('.next-dell-hero-block');
+  const nextBtn = block.querySelector(
+    '.next-dell-hero-block',
+  );
 
-  const prevBtn = block.querySelector('.prev-dell-hero-block');
+  const prevBtn = block.querySelector(
+    '.prev-dell-hero-block',
+  );
 
   const currentSlideText = block.querySelector(
     '.current-slide-dell-hero-block',
   );
 
-  const pauseBtn = block.querySelector('.pause-btn-dell-hero-block');
+  const pauseBtn = block.querySelector(
+    '.pause-btn-dell-hero-block',
+  );
 
   let currentSlide = 0;
 
@@ -240,5 +251,4 @@ export default function decorate(block) {
       ? `${pauseText} ||`
       : `${playText} ▶`;
   });
-
 }
