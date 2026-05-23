@@ -409,7 +409,13 @@
 /* =========================
    MOBILE
 ========================= */
+@media (max-width: 1023px) {
 
+  .hero-slide-dell-hero-block {
+    transition: none !important;
+  }
+
+}
 @media (max-width: 1023px) {
 
   .dark-theme-dell-hero-block .eyebrow-dell-hero-block,
