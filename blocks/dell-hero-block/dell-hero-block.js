@@ -2,38 +2,70 @@ export default function decorate(block) {
 
   const rows = [...block.children];
 
-  // CONTROLS
-  const controlsRow = rows[0];
+ // CONTROLS
+ const controlsRow = rows[0];
 
-  const playText =
-    controlsRow.children[0]?.textContent.trim() || 'Play';
+ const controlsText =
+  controlsRow.children[0]?.textContent.trim() || 'Play,Pause';
 
-  const pauseText =
-    controlsRow.children[1]?.textContent.trim() || 'Pause';
+ const [playLabel, pauseLabel] =
+  controlsText.split(',');
+
+ const playText =
+  playLabel?.trim() || 'Play';
+
+ const pauseText =
+  pauseLabel?.trim() || 'Pause';
 
   // SLIDES
-    const slides = rows.slice(1).map((row) => {
+  const slides = rows.slice(1).map((row) => {
 
-      const cols = [...row.children];
+  const cols = [...row.children];
 
-      const pictureEls = row.querySelectorAll('picture');
-      const linkEls = row.querySelectorAll('a');
+  const pictureEls = row.querySelectorAll('picture');
 
-      return {
-        image: pictureEls[0]?.querySelector('img')?.src || '',
-        mobileImage: pictureEls[1]?.querySelector('img')?.src || '',
+  const contentCol = cols[2];
 
-        eyebrow: cols[2]?.textContent.trim(),
-        title: cols[3]?.textContent.trim(),
-        description: cols[4]?.textContent.trim(),
+  const eyebrowEl =
+    contentCol?.querySelector('p');
 
-        primaryText: linkEls[0]?.textContent.trim(),
-        primaryLink: linkEls[0]?.href,
+  const titleEl =
+    contentCol?.querySelector('h2');
 
-        secondaryText: linkEls[1]?.textContent.trim(),
-        secondaryLink: linkEls[1]?.href,
-      };
-    });
+  const descriptionEl =
+    contentCol?.querySelector('h3');
+
+  const linkEls =
+    contentCol?.querySelectorAll('a') || [];
+
+  return {
+    image: pictureEls[0]?.querySelector('img')?.src || '',
+
+    mobileImage:
+      pictureEls[1]?.querySelector('img')?.src || '',
+
+    eyebrow:
+      eyebrowEl?.textContent.trim() || '',
+
+    title:
+      titleEl?.textContent.trim() || '',
+
+    description:
+      descriptionEl?.textContent.trim() || '',
+
+    primaryText:
+      linkEls[0]?.textContent.trim() || '',
+
+    primaryLink:
+      linkEls[0]?.href || '',
+
+    secondaryText:
+      linkEls[1]?.textContent.trim() || '',
+
+    secondaryLink:
+      linkEls[1]?.href || '',
+  };
+});
   block.textContent = '';
 
   const carousel = document.createElement('section');
@@ -120,7 +152,9 @@ export default function decorate(block) {
 
   controls.className = 'carousel-controls-dell-hero-block';
 
-  controls.innerHTML = `
+controls.innerHTML = `
+  <div class="controls-group-dell-hero-block">
+
     <button class="nav-btn-dell-hero-block prev-dell-hero-block">
       &#8592;
     </button>
@@ -133,10 +167,12 @@ export default function decorate(block) {
       &#8594;
     </button>
 
-    <button class="pause-btn-dell-hero-block">
-      ${pauseText} ||
-    </button>
-  `;
+  </div>
+
+  <button class="pause-btn-dell-hero-block">
+    ${pauseText} ||
+  </button>
+`;
 
   carousel.append(controls);
   block.append(carousel);
