@@ -240,4 +240,5 @@ export default function decorate(block) {
       ? `${pauseText} ||`
       : `${playText} ▶`;
   });
+
 }
