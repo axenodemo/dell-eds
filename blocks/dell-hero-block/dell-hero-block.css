@@ -13,17 +13,48 @@
   max-width: 100%;
 }
 
+.dell-hero-block-container {
+  overflow-x: hidden;
+}
+
+.dell-hero-block-container .hero-carousel-dell-hero-block,
+.dell-hero-block-container .hero-slide-dell-hero-block,
+.dell-hero-block-container .hero-image-dell-hero-block,
+.dell-hero-block-container .hero-image-dell-hero-block picture,
+.dell-hero-block-container .hero-image-dell-hero-block img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.dell-hero-block-container .hero-slide-dell-hero-block,
+.dell-hero-block-container .hero-content-dell-hero-block,
+.dell-hero-block-container .hero-image-dell-hero-block {
+  box-sizing: border-box;
+}
 /* =========================
    MAIN CAROUSEL
 ========================= */
 
-.hero-carousel-dell-hero-block {
+.dell-hero-block-container .hero-carousel-dell-hero-block {
   position: relative;
 
-  width: 100vw;
-  height: 680px;
+  width: 100%;
+  aspect-ratio: 16 / 6;
 
   overflow: hidden;
+}
+
+.dell-hero-block-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.dell-hero-block-container .default-content-wrapper,
+.dell-hero-block-container .dell-hero-block-wrapper,
+.dell-hero-block-container .dell-hero-block {
+  width: 100%;
+  max-width: 100%;
 }
 
 /* =========================
@@ -46,10 +77,13 @@
 }
 
 .hero-slide-dell-hero-block.active {
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
   opacity: 1;
   visibility: visible;
   z-index: 2;
 }
+
+.hero-slide-dell-hero-block.dark-theme-dell-hero-block.active {}
 
 /* =========================
    FULL IMAGE
@@ -63,6 +97,12 @@
   height: 100%;
 
   z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #000;
 }
 
 .hero-image-dell-hero-block img {
@@ -85,7 +125,7 @@
   position: absolute;
   inset: 0;
 
-  background:
+  /*background:
     linear-gradient(
       90deg,
       rgba(0, 0, 0, 0.72) 0%,
@@ -93,21 +133,21 @@
       rgba(0, 0, 0, 0.18) 55%,
       rgba(0, 0, 0, 0) 100%
     );
-
+*/
   z-index: 2;
 }
 
 /* LIGHT SLIDE OVERLAY */
 
 .light-theme-dell-hero-block::after {
-  background:
+ /* background:
     linear-gradient(
       90deg,
       rgba(255, 255, 255, 0.82) 0%,
       rgba(255, 255, 255, 0.65) 28%,
       rgba(255, 255, 255, 0.15) 55%,
       rgba(255, 255, 255, 0) 100%
-    );
+    );*/
 }
 
 /* =========================
@@ -117,19 +157,15 @@
 .hero-content-dell-hero-block {
   position: relative;
   z-index: 5;
-
-  width: 40%;
+  width: 30%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
-  padding:
-    70px
-    5%
-    110px
-    6%;
+  justify-content: left;
+  padding: 150px
+    0.5%
+    111px
+    2%;
 }
 
 /* =========================
@@ -137,43 +173,41 @@
 ========================= */
 
 .eyebrow-dell-hero-block {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.3;
-
-  margin-bottom: 18px;
+  margin-bottom: 0px;
 }
 
-.hero-content-dell-hero-block h1 {
+.hero-content-dell-hero-block .title-dell-hero-block {
   font-size: 58px;
   font-weight: 300;
   line-height: 1.04;
-
   letter-spacing: -1px;
-
   margin-bottom: 22px;
 }
 
 .desc-dell-hero-block {
-  font-size: 18px;
-  font-weight: 300;
-  line-height: 1.5;
-
+  font-weight: 400;
+  margin-top:0px;
   max-width: 520px;
 
-  margin-bottom: 30px;
+  margin-bottom: 24px;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 /* TEXT COLORS */
 
 .dark-theme-dell-hero-block .eyebrow-dell-hero-block,
-.dark-theme-dell-hero-block h1,
+.dark-theme-dell-hero-block .title-dell-hero-block,
 .dark-theme-dell-hero-block .desc-dell-hero-block {
-  color: white;
+  font-family: Roboto,'Cordia New',"Microsoft Sans Serif",Utsaah,'Devanagari MT','Nirmala UI',Latha,InaiMathi,Gautami,'Telugu Sangam MN',Tunga,'Kannada Sangam MN',Kartika,'Malayalam Sangam MN',Shruti,'Gujarati MT','Gujarati Sangam MN',Vrinda,'Bangla Sangam MN','Meiryo UI','メイリオ','MS UI Gothic Reg','Hiragino Kaku Gothic Reg','ヒラギノ角ゴ Pro W3 Reg','Microsoft YaHei','微软雅黑','Hiragino Sans GB','Microsoft JhengHei','微軟正黑體','Malgun Gothic','맑은 고딕',Gulim,AppleGothic,'Apple LiGothic','LiHei Pro',Osaka,STHeiti,'华文黑体',STXihei,'华文细黑',SimHei,'黑体','Arial Unicode MS',Arial,sans-serif;
+  color: #000;
 }
 
 .light--dell-hero-block .eyebrow-dell-hero-block,
-.light-theme-dell-hero-block h1,
+.light-theme-dell-hero-block .title-dell-hero-block,
 .light-theme-dell-hero-block .desc-dell-hero-block {
   color: #111;
 }
@@ -184,9 +218,8 @@
 
 .btn-wrap-dell-hero-block {
   display: flex;
-  flex-wrap: wrap;
-
-  gap: 14px;
+  /* flex-wrap: wrap; */
+  /* gap: 14px; */
 }
 
 .primary-btn-dell-hero-block,
@@ -211,13 +244,14 @@
 /* DARK */
 
 .dark-theme-dell-hero-block .primary-btn-dell-hero-block {
-  background: white;
-  color: #111;
+  background: black;
+  color: white;
 }
 
 .dark-theme-dell-hero-block .outline-btn-dell-hero-block {
   background: rgba(255,255,255,0.92);
   color: #000000;
+  border: 2px solid #6e6e6e;
 }
 
 /* LIGHT */
@@ -230,8 +264,7 @@
 .light-theme-dell-hero-block .outline-btn-dell-hero-block {
   background: rgba(255,255,255,0.92);
   color: #555;
-
-  border: 1px solid #bbb;
+  border: 1.4px solid #6e6e6e;
 }
 
 .primary-btn-dell-hero-block:hover,
@@ -243,7 +276,11 @@
    CONTROLS
 ========================= */
 
-.carousel-controls-dell-hero-block{
+/* =========================
+   CONTROLS
+========================= */
+
+.carousel-controls-dell-hero-block {
   position: absolute;
 
   right: 5%;
@@ -252,64 +289,97 @@
   display: flex;
   align-items: center;
 
-  gap: 10px;
+  gap: 12px;
 
   z-index: 20;
 }
 
-/* ARROWS */
+/* CONNECTED WHITE GROUP */
 
-.nav-btn-dell-hero-block {
-  width: 46px;
-  height: 46px;
-
-  border: none;
-  border-radius: 50%;
+.prev-dell-hero-block,
+.slide-count-dell-hero-block,
+.next-dell-hero-block {
+  height: 40px;
 
   background: white;
-  color: #006bbd;
-
-  font-size: 18px;
-
-  cursor: pointer;
-}
-
-/* COUNTER */
-
-.slide-count-dell-hero-block {
-  height: 46px;
-
-  padding: 0 18px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: white;
+  flex-shrink: 0;
+}
 
+/* ARROWS */
+
+.nav-btn-dell-hero-block {
+  width: 40px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  background: white;
   color: #006bbd;
 
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 500;
+
+  cursor: pointer;
 }
 
-/* PLAY BUTTON */
+/* LEFT EDGE */
+
+.prev-dell-hero-block {
+  border-radius: 8px 0 0 8px;
+}
+
+/* CENTER */
+
+.slide-count-dell-hero-block {
+  width: 37px;
+
+  padding: 0;
+  margin: 0;
+
+  color: #006bbd;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 0;
+}
+
+/* RIGHT EDGE */
+
+.next-dell-hero-block {
+  border-radius: 0 8px 8px 0;
+}
+
+/* PLAY / PAUSE */
 
 .pause-btn-dell-hero-block {
-  height: 46px;
-
-  padding: 0 22px;
+  width: 66px;
+  height: 40px;
 
   border: none;
-  border-radius: 30px;
+  border-radius: 8px;
 
   background: black;
   color: white;
 
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 13px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
 
   cursor: pointer;
+
+  flex-shrink: 0;
 }
 
 /* =========================
@@ -318,7 +388,7 @@
 
 @media (max-width: 1100px) {
 
-  .hero-carousel-dell-hero-block {
+  .dell-hero-block-container .hero-carousel-dell-hero-block {
     height: 600px;
   }
 
@@ -326,7 +396,7 @@
     width: 48%;
   }
 
-  .hero-content-dell-hero-block h1 {
+  .hero-content-dell-hero-block .title-dell-hero-block {
     font-size: 46px;
   }
 
@@ -339,10 +409,22 @@
 /* =========================
    MOBILE
 ========================= */
+@media (max-width: 1023px) {
 
-@media (max-width: 768px) {
+  .hero-slide-dell-hero-block {
+    transition: none !important;
+  }
 
-  .hero-carousel-dell-hero-block {
+}
+@media (max-width: 1023px) {
+
+  .dark-theme-dell-hero-block .eyebrow-dell-hero-block,
+.dark-theme-dell-hero-block .title-dell-hero-block,
+.dark-theme-dell-hero-block .desc-dell-hero-block {
+  /* font-family: Roboto,'Cordia New',"Microsoft Sans Serif",Utsaah,'Devanagari MT','Nirmala UI',Latha,InaiMathi,Gautami,'Telugu Sangam MN',Tunga,'Kannada Sangam MN',Kartika,'Malayalam Sangam MN',Shruti,'Gujarati MT','Gujarati Sangam MN',Vrinda,'Bangla Sangam MN','Meiryo UI','メイリオ','MS UI Gothic Reg','Hiragino Kaku Gothic Reg','ヒラギノ角ゴ Pro W3 Reg','Microsoft YaHei','微软雅黑','Hiragino Sans GB','Microsoft JhengHei','微軟正黑體','Malgun Gothic','맑은 고딕',Gulim,AppleGothic,'Apple LiGothic','LiHei Pro',Osaka,STHeiti,'华文黑体',STXihei,'华文细黑',SimHei,'黑体','Arial Unicode MS',Arial,sans-serif; */
+  color: #000000;
+}
+  .dell-hero-block-container .hero-carousel-dell-hero-block {
     height: 760px;
   }
 
@@ -389,7 +471,7 @@
     margin-bottom: 14px;
   }
 
-  .hero-content-dell-hero-block h1 {
+  .hero-content-dell-hero-block .title-dell-hero-block {
     font-size: 42px;
     line-height: 1.05;
 
@@ -458,19 +540,17 @@
 a.button:hover, a.button:focus, button:hover, button:focus{
         background-color: #f8f8f8;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
 
-  .hero-carouse-dell-hero-block {
+  .dell-hero-block-container .hero-carousel-dell-hero-block {
     height: 760px;
   }
 
   .hero-slide-dell-hero-block {
     position: absolute;
     inset: 0;
-
     display: flex;
     flex-direction: column;
-
     overflow: hidden;
   }
 
@@ -488,7 +568,7 @@ a.button:hover, a.button:focus, button:hover, button:focus{
     inset: unset !important;
 
     width: 100%;
-    height: 42%;
+    /*height: 42%;*/
 
     order: 1;
 
@@ -499,9 +579,9 @@ a.button:hover, a.button:focus, button:hover, button:focus{
 
   .hero-image-dell-hero-block img {
     width: 100%;
-    height: 100%;
+   /* height: 100%;*/
 
-    object-fit: cover;
+    /*object-fit: cover;*/
     object-position: center;
 
     display: block;
@@ -511,45 +591,38 @@ a.button:hover, a.button:focus, button:hover, button:focus{
 
   .hero-content-dell-hero-block {
     position: relative !important;
-
     width: 100%;
     height: 58%;
-
     order: 2;
-
     display: flex;
     flex-direction: column;
-
-    justify-content: flex-start;
-
-    padding:
-      28px
-      24px
-      24px;
-
+    justify-content: flex-end;
+    padding: 24px
+      25px
+      9px;
     z-index: 5;
   }
 
   /* DARK */
 
   .dark-theme-dell-hero-block .hero-content-dell-hero-block {
-    background:
+    /* background:
       linear-gradient(
         180deg,
         #06113f 0%,
         #02081f 100%
-      );
+      ); */
   }
 
   /* LIGHT */
 
   .light-theme-dell-hero-block .hero-content-dell-hero-block {
     background:
-      linear-gradient(
+      /* linear-gradient(
         180deg,
         #f6f6f6 0%,
         #e2e2e2 100%
-      );
+      ); */
   }
 
   /* TYPOGRAPHY */
@@ -561,7 +634,7 @@ a.button:hover, a.button:focus, button:hover, button:focus{
     margin-bottom: 14px;
   }
 
-  .hero-content-dell-hero-block h1 {
+  .hero-content-dell-hero-block .title-dell-hero-block {
     font-size: 42px;
     font-weight: 300;
     line-height: 1.05;
@@ -583,9 +656,7 @@ a.button:hover, a.button:focus, button:hover, button:focus{
   .btn-wrap-dell-hero-block {
     display: flex;
     flex-direction: column;
-
     gap: 10px;
-
     margin-bottom: 24px;
   }
 
@@ -603,20 +674,14 @@ a.button:hover, a.button:focus, button:hover, button:focus{
 
   .carousel-controls-dell-hero-block {
   position: relative !important;
-
   left: unset !important;
   right: unset !important;
   bottom: unset !important;
-
   display: flex;
   align-items: center;
-
   gap: 8px;
-
   margin-top: auto;
-
   padding-top: 20px;
-
   z-index: 20;
 }
 
@@ -677,8 +742,13 @@ a.button:hover, a.button:focus, button:hover, button:focus{
   display: block;
 }
 
-.hero-content-dell-hero-block h1 {
-  font-weight: 100;
+.hero-content-dell-hero-block .title-dell-hero-block {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-top: 8px !important;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  font-family: Roboto,'Cordia New',"Microsoft Sans Serif",Utsaah,'Devanagari MT','Nirmala UI',Latha,InaiMathi,Gautami,'Telugu Sangam MN',Tunga,'Kannada Sangam MN',Kartika,'Malayalam Sangam MN',Shruti,'Gujarati MT','Gujarati Sangam MN',Vrinda,'Bangla Sangam MN','Meiryo UI','メイリオ','MS UI Gothic Reg','Hiragino Kaku Gothic Reg','ヒラギノ角ゴ Pro W3 Reg','Microsoft YaHei','微软雅黑','Hiragino Sans GB','Microsoft JhengHei','微軟正黑體','Malgun Gothic','맑은 고딕',Gulim,AppleGothic,'Apple LiGothic','LiHei Pro',Osaka,STHeiti,'华文黑体',STXihei,'华文细黑',SimHei,'黑体','Arial Unicode MS',Arial,sans-serif;
 }
 .btn-wrap-dell-hero-block {
   flex-direction: row;  /* Changed from column */
@@ -687,4 +757,238 @@ a.button:hover, a.button:focus, button:hover, button:focus{
 .primary-btn-dell-hero-block,
 .outline-btn-dell-hero-block {
   width: calc(50% - 5px);  /* Each button takes 50% minus half the gap */
+}
+
+.nav-btn-dell-hero-block {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  background: white;
+  color: #006bbd;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  border-radius: 0;
+}
+
+.nav-btn-dell-hero-block {
+  width: 40px;
+  height: 40px;
+
+  border: none;
+
+  background: white;
+  color: #006bbd;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.prev-dell-hero-block {
+  border-radius: 999px 0 0 999px;
+}
+
+.next-dell-hero-block {
+  border-radius: 0 999px 999px 0;
+}
+
+.slide-count-dell-hero-block {
+  min-width: 37px;
+
+  padding: 0;
+
+  border-radius: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pause-btn-dell-hero-block {
+  height: 40px;
+
+  min-width: 66px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: black;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-count-dell-hero-block {
+  width: 37px;
+  height: 40px;
+
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  color: #006bbd;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  border-radius: 0;
+}
+
+.prev-dell-hero-block {
+  border-radius: 999px 0 0 999px;
+}
+
+.next-dell-hero-block {
+  border-radius: 0 999px 999px 0;
+}
+
+.prev-dell-hero-block,
+.slide-count-dell-hero-block,
+.next-dell-hero-block {
+  flex-shrink: 0;
+}
+.carousel-controls-dell-hero-block{
+  position: absolute;
+  right: 5%;
+  bottom: 38px;
+  display: flex;
+  align-items: center;
+  /* gap: 12px; */
+  z-index: 20;
+}
+.pause-btn-dell-hero-block {
+  width: 66px;
+  height: 40px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: black;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+.controls-group-dell-hero-block {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.prev-dell-hero-block,
+.next-dell-hero-block,
+.pause-btn-dell-hero-block {
+  border-radius: 0;
+}
+
+/* KEEP ORIGINAL BUTTON COLORS */
+
+/* WHITE CAROUSEL BUTTONS */
+
+.nav-btn-dell-hero-block:hover,
+.nav-btn-dell-hero-block:focus,
+.nav-btn-dell-hero-block:active {
+  background: white !important;
+  color: #006bbd !important;
+
+  outline: none;
+  box-shadow: none;
+}
+
+/* BLACK PLAY/PAUSE BUTTON */
+
+.pause-btn-dell-hero-block:hover,
+.pause-btn-dell-hero-block:focus,
+.pause-btn-dell-hero-block:active {
+  background: black !important;
+  color: white !important;
+
+  outline: none;
+  box-shadow: none;
+}
+
+.primary-btn-dell-hero-block,
+.outline-btn-dell-hero-block {
+  min-width: 111.578px;
+  height: 26px;
+
+  padding: 11px 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: content-box;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+
+  transition: 0.3s ease;
+}
+@media (max-width: 1023px)
+{
+.hero-image-dell-hero-block {
+  position: relative !important;
+
+  inset: unset !important;
+
+  width: 100%;
+  height: auto;
+
+  order: 1;
+
+  overflow: hidden;
+
+  z-index: 1;
+}
+
+.hero-image-dell-hero-block picture,
+.hero-image-dell-hero-block img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  object-fit: unset;
+}
 }
