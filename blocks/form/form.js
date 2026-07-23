@@ -5,7 +5,8 @@ import { pushDataLayerEvent } from '../../scripts/datalayer.js';
  * Public client-side configuration. Both values are safe to expose.
  * They can be overridden per-page via metadata: `form-endpoint`, `recaptcha-site-key`.
  */
-const SUPABASE_FUNCTION_URL = 'https://YOUR-PROJECT-REF.supabase.co/functions/v1/submit-lead';
+/* POC project (ap-southeast-2) — swap for the Mumbai (ap-south-1) project ref before launch */
+const SUPABASE_FUNCTION_URL = 'https://aobzlfhzdonzlwkppyau.supabase.co/functions/v1/submit-lead';
 const RECAPTCHA_SITE_KEY = 'RECAPTCHA_V3_SITE_KEY';
 
 const SUBMIT_COOLDOWN_MS = 60000;
