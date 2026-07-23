@@ -11,3 +11,6 @@ helix-importer-ui
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
+
+# confidential brand asset — ships via the DA doc, never via this public repo
+drafts/jsw/silhouette.jpg

@@ -1,0 +1,7 @@
+# Supabase project config for the JSW Motors teaser lead capture.
+# The form posts anonymously — no Supabase auth JWT — so verify_jwt is off;
+# the function does its own CAPTCHA + rate-limit checks instead.
+
+[functions.submit-lead]
+enabled = true
+verify_jwt = false
