@@ -233,11 +233,23 @@ export default function decorate(block) {
 
   prevBtn.addEventListener('click', prevSlide);
 
-  setInterval(() => {
+  const autoPlayInterval = setInterval(() => {
     if (autoPlay) {
       nextSlide();
     }
   }, 5000);
+
+  const observer = new MutationObserver(() => {
+    if (!document.body.contains(block)) {
+      clearInterval(autoPlayInterval);
+      observer.disconnect();
+    }
+  });
+
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
 
   pauseBtn.addEventListener('click', () => {
     autoPlay = !autoPlay;
