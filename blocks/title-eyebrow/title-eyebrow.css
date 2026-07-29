@@ -3,15 +3,6 @@
   color: #ffffff;
 }
 
-body > main > div > div.title-eyebrow-wrapper{
-  padding: 0%;
-}
-
-
-.title-eyebrow .ts-container {
-  max-width: 1200px;
-}
-
 .title-eyebrow .ts-row {
   display: flex;
   flex-direction: column;
