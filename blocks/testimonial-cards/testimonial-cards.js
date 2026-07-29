@@ -12,33 +12,30 @@ export default function decorate(block) {
 
     if (!picture && !titleText && !descText) return;
 
-    const inner = document.createElement('div');
-    inner.classList.add('testimony-card-inner');
-    if (picture) inner.appendChild(picture);
+    const cardLink = document.createElement('a');
+    cardLink.classList.add('testimonial-cards-inner');
+    cardLink.href = href;
+
+    if (picture) cardLink.appendChild(picture);
 
     const overlay = document.createElement('div');
-    overlay.classList.add('testimony-card-overlay');
+    overlay.classList.add('testimonial-cards-overlay');
 
-    const titleLink = document.createElement('a');
-    titleLink.classList.add('testimony-title');
-    titleLink.href = href;
-    titleLink.textContent = titleText;
-    overlay.appendChild(titleLink);
+    const titleEl = document.createElement('span');
+    titleEl.classList.add('testimonial-cards-title');
+    titleEl.textContent = titleText;
+    overlay.appendChild(titleEl);
 
     if (descText) {
       const descEl = document.createElement('span');
-      descEl.classList.add('testimony-desc');
+      descEl.classList.add('testimonial-cards-desc');
       descEl.textContent = descText;
       overlay.appendChild(descEl);
     }
 
-    inner.appendChild(overlay);
+    cardLink.appendChild(overlay);
     row.innerHTML = '';
-    row.appendChild(inner);
-
-    row.addEventListener('click', (e) => {
-      if (!e.target.closest('a')) window.location.href = href;
-    });
+    row.appendChild(cardLink);
 
     renderedCount += 1;
   });
