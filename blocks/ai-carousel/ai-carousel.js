@@ -22,7 +22,7 @@ export default function decorate(block) {
     : [];
 
   const heroTitle = heroParagraphs[0]?.textContent.trim() || '';
-  const heroDesc = heroParagraphs[1]?.innerHTML || '';
+  const heroDescSource = heroParagraphs[1] || null;
 
   /* =========================
      EXTRACT ALL CARDS
@@ -40,27 +40,13 @@ export default function decorate(block) {
         (p) => !p.querySelector('strong') && !p.querySelector('a'),
       );
 
-      const desc = descElement?.innerHTML || '';
       const link = cell.querySelector('a');
 
-      const linkHTML = link
-        ? `
-          <a
-            href="${link.href}"
-            target="_blank"
-            rel="noopener"
-            class="dell-ai-carousel-card-link"
-          >
-            ${link.textContent.trim()}
-          </a>
-        `
-        : '';
-
-      if (title || desc) {
+      if (title || descElement) {
         cards.push({
           title,
-          desc,
-          linkHTML,
+          descSource: descElement || null,
+          linkSource: link || null,
         });
       }
     });
@@ -88,44 +74,68 @@ export default function decorate(block) {
     return result;
   }
 
-  function cardTemplate(card) {
-    return `
-      <article class="dell-ai-carousel-card">
-        <h3 class="dell-ai-carousel-card-title">
-          ${card.title}
-        </h3>
+  /* Clone the actual child nodes of a source element into a target element.
+     This preserves rich, authored formatting (bold, links, etc.) without
+     ever serializing to / parsing from an HTML string (no innerHTML). */
+  function cloneChildren(sourceEl, targetEl) {
+    if (!sourceEl) return;
+    [...sourceEl.childNodes].forEach((node) => {
+      targetEl.appendChild(node.cloneNode(true));
+    });
+  }
 
-        <div class="dell-ai-carousel-card-desc">
-          ${card.desc}
-        </div>
+  function buildCardElement(card) {
+    const article = document.createElement('article');
+    article.className = 'dell-ai-carousel-card';
 
-        ${card.linkHTML}
-      </article>
-    `;
+    const titleEl = document.createElement('h3');
+    titleEl.className = 'dell-ai-carousel-card-title';
+    titleEl.textContent = card.title;
+    article.appendChild(titleEl);
+
+    const descEl = document.createElement('div');
+    descEl.className = 'dell-ai-carousel-card-desc';
+    cloneChildren(card.descSource, descEl);
+    article.appendChild(descEl);
+
+    if (card.linkSource) {
+      const anchor = document.createElement('a');
+      anchor.href = card.linkSource.href;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener';
+      anchor.className = 'dell-ai-carousel-card-link';
+      anchor.textContent = card.linkSource.textContent.trim();
+      article.appendChild(anchor);
+    }
+
+    return article;
+  }
+
+  function buildSlideElement(group) {
+    const slide = document.createElement('div');
+    slide.className = 'dell-ai-carousel-slide';
+    group.forEach((card) => slide.appendChild(buildCardElement(card)));
+    return slide;
   }
 
   function buildSlides(cardsPerView) {
     const grouped = chunkArray(cards, cardsPerView);
+    return grouped.map(buildSlideElement);
+  }
 
-    return grouped
-      .map(
-        (group) => `
-          <div class="dell-ai-carousel-slide">
-            ${group.map(cardTemplate).join('')}
-          </div>
-        `,
-      )
-      .join('');
+  function buildDotElement(index, activeIndex) {
+    const button = document.createElement('button');
+    button.className = `dell-ai-carousel-dot${index === activeIndex ? ' dell-ai-carousel-dot-active' : ''}`;
+    button.setAttribute('aria-label', `Go to slide ${index + 1}`);
+    button.dataset.index = String(index);
+    button.addEventListener('click', () => {
+      goToSlide(index);
+    });
+    return button;
   }
 
   function buildDots(total, activeIndex) {
-    return Array.from({ length: total }, (_, i) => `
-      <button
-        class="dell-ai-carousel-dot ${i === activeIndex ? 'dell-ai-carousel-dot-active' : ''}"
-        aria-label="Go to slide ${i + 1}"
-        data-index="${i}"
-      ></button>
-    `).join('');
+    return Array.from({ length: total }, (_, i) => buildDotElement(i, activeIndex));
   }
 
   /* =========================
@@ -135,53 +145,48 @@ export default function decorate(block) {
   block.classList.add('dell-ai-carousel');
 
   /* =========================
-     INITIAL MARKUP
+     INITIAL MARKUP (DOM API, no innerHTML)
   ========================= */
 
-  block.innerHTML = `
-    <div class="dell-ai-carousel-hero">
-      <h2 class="dell-ai-carousel-hero-title">
-        ${heroTitle}
-      </h2>
+  const heroSection = document.createElement('div');
+  heroSection.className = 'dell-ai-carousel-hero';
 
-      <div class="dell-ai-carousel-hero-desc">
-        ${heroDesc}
-      </div>
-    </div>
+  const heroTitleEl = document.createElement('h2');
+  heroTitleEl.className = 'dell-ai-carousel-hero-title';
+  heroTitleEl.textContent = heroTitle;
+  heroSection.appendChild(heroTitleEl);
 
-    <div class="dell-ai-carousel-shell">
+  const heroDescEl = document.createElement('div');
+  heroDescEl.className = 'dell-ai-carousel-hero-desc';
+  cloneChildren(heroDescSource, heroDescEl);
+  heroSection.appendChild(heroDescEl);
 
-      <button
-        class="dell-ai-carousel-arrow dell-ai-carousel-arrow-prev"
-        aria-label="Previous slide"
-      >
-        &#8592;
-      </button>
+  const shell = document.createElement('div');
+  shell.className = 'dell-ai-carousel-shell';
 
-      <div class="dell-ai-carousel-track-wrapper">
-        <div class="dell-ai-carousel-track"></div>
-      </div>
+  const prevButton = document.createElement('button');
+  prevButton.className = 'dell-ai-carousel-arrow dell-ai-carousel-arrow-prev';
+  prevButton.setAttribute('aria-label', 'Previous slide');
+  prevButton.textContent = '\u2190';
 
-      <button
-        class="dell-ai-carousel-arrow dell-ai-carousel-arrow-next"
-        aria-label="Next slide"
-      >
-        &#8594;
-      </button>
+  const trackWrapper = document.createElement('div');
+  trackWrapper.className = 'dell-ai-carousel-track-wrapper';
 
-    </div>
+  const track = document.createElement('div');
+  track.className = 'dell-ai-carousel-track';
+  trackWrapper.appendChild(track);
 
-    <div class="dell-ai-carousel-dots"></div>
-  `;
+  const nextButton = document.createElement('button');
+  nextButton.className = 'dell-ai-carousel-arrow dell-ai-carousel-arrow-next';
+  nextButton.setAttribute('aria-label', 'Next slide');
+  nextButton.textContent = '\u2192';
 
-  /* =========================
-     ELEMENT REFERENCES
-  ========================= */
+  shell.append(prevButton, trackWrapper, nextButton);
 
-  const track = block.querySelector('.dell-ai-carousel-track');
-  const dotsContainer = block.querySelector('.dell-ai-carousel-dots');
-  const prevButton = block.querySelector('.dell-ai-carousel-arrow-prev');
-  const nextButton = block.querySelector('.dell-ai-carousel-arrow-next');
+  const dotsContainer = document.createElement('div');
+  dotsContainer.className = 'dell-ai-carousel-dots';
+
+  block.replaceChildren(heroSection, shell, dotsContainer);
 
   /* =========================
      STATE
@@ -224,20 +229,10 @@ export default function decorate(block) {
     cardsPerView = getCardsPerView();
 
     const groupedSlides = chunkArray(cards, cardsPerView);
-
     totalSlides = groupedSlides.length;
 
-    track.innerHTML = buildSlides(cardsPerView);
-
-    dotsContainer.innerHTML = buildDots(totalSlides, currentSlide);
-
-    dotsContainer
-      .querySelectorAll('.dell-ai-carousel-dot')
-      .forEach((dot) => {
-        dot.addEventListener('click', () => {
-          goToSlide(Number(dot.dataset.index));
-        });
-      });
+    track.replaceChildren(...buildSlides(cardsPerView));
+    dotsContainer.replaceChildren(...buildDots(totalSlides, currentSlide));
 
     if (currentSlide >= totalSlides) {
       currentSlide = totalSlides - 1;
@@ -247,16 +242,31 @@ export default function decorate(block) {
   }
 
   /* =========================
+     LISTENER LIFECYCLE
+     Guard against listener accumulation if this block is ever
+     re-decorated (e.g. re-run of decorate() on the same element).
+     Any previously registered listeners for this block are aborted
+     before new ones are attached.
+  ========================= */
+
+  if (block.dellAiCarouselController) {
+    block.dellAiCarouselController.abort();
+  }
+  const controller = new AbortController();
+  block.dellAiCarouselController = controller;
+  const { signal } = controller;
+
+  /* =========================
      ARROWS
   ========================= */
 
   prevButton.addEventListener('click', () => {
     goToSlide(currentSlide - 1);
-  });
+  }, { signal });
 
   nextButton.addEventListener('click', () => {
     goToSlide(currentSlide + 1);
-  });
+  }, { signal });
 
   /* =========================
      TOUCH SWIPE
@@ -269,7 +279,7 @@ export default function decorate(block) {
     (e) => {
       touchStartX = e.touches[0].clientX;
     },
-    { passive: true },
+    { passive: true, signal },
   );
 
   track.addEventListener(
@@ -286,7 +296,7 @@ export default function decorate(block) {
         goToSlide(currentSlide - 1);
       }
     },
-    { passive: true },
+    { passive: true, signal },
   );
 
   /* =========================
@@ -306,7 +316,7 @@ export default function decorate(block) {
         buildCarousel();
       }
     }, 150);
-  });
+  }, { signal });
 
   /* =========================
      INITIALIZE
