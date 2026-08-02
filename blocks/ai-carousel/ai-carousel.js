@@ -129,6 +129,7 @@ export default function decorate(block) {
     button.setAttribute('aria-label', `Go to slide ${index + 1}`);
     button.dataset.index = String(index);
     button.addEventListener('click', () => {
+
       goToSlide(index);
     });
     return button;
