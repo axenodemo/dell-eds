@@ -1,0 +1,40 @@
+.social-links .social-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links .social-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 18px;
+  border: 2px solid #0a0a0a;
+  border-radius: 999px;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+}
+
+.social-links .social-list a:hover,
+.social-links .social-list a:focus-visible {
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+.social-links .social-list a:focus-visible {
+  outline: 3px solid #0a0a0a;
+  outline-offset: 2px;
+}
+
+@media (width >= 600px) {
+  .social-links .social-list {
+    gap: 20px;
+  }
+}

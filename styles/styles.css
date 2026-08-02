@@ -314,7 +314,7 @@ main img {
 
 /* sections */
 main>.section {
-  margin: 0px 0;
+  margin: 0;
 }
 
 main>.section>div {
@@ -344,4 +344,47 @@ main .section.highlight {
 main .section.charcoal-blue-bg {
   background-color: rgb(29 44 59);
   color: #fff;
+}
+
+/* JSW teaser hero: dark scene, centered vehicle silhouette, monochrome text */
+main .section.jsw-hero {
+  background-color: #08090a;
+  text-align: center;
+}
+
+main .section.jsw-hero .hero {
+  min-height: auto;
+  padding: 40px 24px 0;
+}
+
+main .section.jsw-hero .hero picture {
+  position: static;
+  display: block;
+  max-width: 720px;
+  margin: 8px auto 0;
+}
+
+main .section.jsw-hero .hero img {
+  width: 100%;
+  height: auto;
+
+  /* fade photo edges into the section background */
+  mask-image: radial-gradient(ellipse 70% 65% at center, #000 55%, transparent 98%);
+}
+
+main .section.jsw-hero .hero h1 {
+  margin-top: 0;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+main .section.jsw-hero .hero p {
+  color: #c7c7c7;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--body-font-size-xs);
+}
+
+main .section.jsw-hero .hero p:last-child {
+  margin-bottom: 0;
 }
