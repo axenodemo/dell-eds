@@ -4,7 +4,7 @@ export default function decorate(block) {
   const rows = [...block.querySelectorAll(':scope > div')];
 
   const grid = document.createElement('div');
-  grid.classList.add('hero-cards-category-grid__grid');
+  grid.classList.add('hero-cards-category-grid__items');
 
   rows.forEach((row) => {
     const cols = [...row.querySelectorAll(':scope > div')];
