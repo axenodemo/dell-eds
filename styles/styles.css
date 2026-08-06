@@ -20,8 +20,8 @@
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'Roboto', roboto, roboto-fallback, sans-serif;
+  --heading-font-family: 'Roboto', roboto-condensed, roboto-condensed-fallback, sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -330,6 +330,25 @@ main>.section:first-of-type {
 @media (width >=900px) {
   main>.section>div {
     padding: 0 32px;
+  }
+}
+
+@media (width >= 1028px) {
+  main > .section.charcoal-blue-bg > div,
+  main > .section.support-background > div,
+  main > .section.title-eyebrow-container > div {
+    margin-left: max(99px, calc((100% - 1200px) / 2));
+    margin-right: max(99px, calc((100% - 1200px) / 2));
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  main > .section.charcoal-blue-bg > .default-content-wrapper p,
+  main > .section.support-background > .default-content-wrapper p,
+  main > .section.title-eyebrow-container > .default-content-wrapper p {
+    margin: 0;
+    margin-block-end: 15px;
+    font-size: 16px;
   }
 }
 

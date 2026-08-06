@@ -1,3 +1,7 @@
+.iconcards {
+  font-family: 'Roboto', sans-serif;
+}
+
 .iconcards>ul {
   list-style: none;
   margin: 0;
@@ -28,33 +32,39 @@
 .iconcards .iconcards-card-body {
   margin: 0;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 1.2;
+  font-weight: 400;
+  line-height: 24px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .iconcards .iconcards-card-body p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
   margin: 0;
 }
 
 .iconcards .iconcards-card-body a {
   color: #fff;
   text-decoration: none;
+  display: inline-block;
+  transition: opacity 0.2s ease;
+}
+
+.iconcards .iconcards-card-body a:hover {
+  text-decoration: underline;
+  opacity: 0.9;
 }
 
 .iconcards .iconcards-card-image {
   margin: 0 24px 0 0;
   line-height: 0;
+  flex-shrink: 0;
 }
 
 .iconcards .iconcards-card-image p {
   all: unset;
-}
-
-
-.supportcards>ul>li .supportcards-card-image>picture>img {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
 }
 
 .iconcards>ul>li .iconcards-card-image>picture>img {

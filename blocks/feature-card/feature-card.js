@@ -117,7 +117,6 @@ export default function decorate(block) {
   // Assemble Title
   if (title) {
     title.className = 'feature-card-title';
-    title.id = 'card-title';
     content.append(title);
   }
 

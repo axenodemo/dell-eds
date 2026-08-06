@@ -4,7 +4,6 @@
  * @param {Element} block The block element
  * @returns {Object} The configuration object
  */
-// eslint-disable-next-line import/prefer-default-export
 export function extractBlockConfig(block) {
   const rows = [...block.children];
   const lastRow = rows[rows.length - 1];
